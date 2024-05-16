@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        let movies = [
+            "../images/1.jpg", 
+            "../images/2.jpg", 
+            "../images/3.jpg", 
+            "../images/4.jpg", 
+            "../images/5.jpg", 
+            "../images/6.jpg", 
+            "../images/7.jpg", 
+            "../images/8.jpg", 
+            "../images/9.jpg", 
+            "../images/10.jpg"
+        ]
+        let movieNames = [
+            "<유미의 세포들>", 
+            "<파묘>", 
+            "<쿵푸팬더4>", 
+            "<비키퍼>", 
+            "<댓글부대>", 
+            "<씬>", 
+            "<오멘>", 
+            "<마더스>", 
+            "<남은인생 10년>", 
+            "<듄>"
+        ]
+        let timer = "";
+        let index = 0;
+        function showMovie(){
+            if(index == movies.length){index = 0}
+            $("#topNews")[0].innerHTML="<h1>" + movieNames[index] + "</h1>";
+            index++;
+            let imgPath ="../images/" + index + ".jpg";
+            $("img").attr("src", imgPath);
+        }
+        function stopMovie(){
+            window.clearInterval(timer);
+        }
+        function startMovie(){
+            showMovie();
+            timer = window.setInterval(showMovie, 3000);
+        }
+        $(function(){
+            $("input[value='상영영화보기']").on("click", startMovie);
+            $("input[value='상영영화중지']").on("click", stopMovie);
+        })
+    </script>
+</head>
+<body>
+    <div id="topNews"></div>
+    <img id="poster" src='../images/after.png'></img>
+    <br>
+    <!-- 상영영화보기 버튼을 클릭하면 영화명을 topnews에 출력 -->
+    <input type="button" value="상영영화보기">
+    <input type="button" value="상영영화중지">
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            list-style-type: lower-roman;
+        }
+    </style>
+    <script>
+        let txtArr = [];
+  
+        function prt() {
+            let txt1 = document.getElementById("txt1").value;
+            let ulEle = document.getElementById("ulEle");
+            ulEle.innerHTML += "<li>" + txt1 + "</li>";
+            
+            txt1.value = '';
+            txt1.focus();
+        }
+
+        function prt2() {
+            let txt1 = document.getElementById("txt1");
+            txtArr.push(txt1.value);
+            console.log(txtArr);
+            txt1.value = '';
+            txt1.focus();
+            let ulEle = document.getElementById("ulEle");
+            let data = ''
+            for(i=0 ; i<txtArr.length ; i++) {
+                data += "<li>" + txtArr[i]+ "</li>";
+            }
+            ulEle.innerHTML = "<li>" + data + "</li>";
+        }
+    </script>
+</head>
+<body>
+    <h1>점심메뉴</h1>
+    <input type="text" name="" id="txt1">
+    <input type="button" value="입력" onclick="prt();">
+
+    <div>
+        <ul id="ulEle">
+            <li><h2>메뉴</h2></li>
+        </ul>
+    </div>
+</body>
+</html>

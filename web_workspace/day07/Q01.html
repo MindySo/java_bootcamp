@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let bg1 = new Image();
+        let bg2 = new Image();
+        let run1 = new Image();
+        let run2 = new Image();
+        let run3 = new Image();
+        bg1.src = "../images/bg1.jpg";
+        bg2.src = "../images/bg2.jpg";
+        run1.src = "../images/run1.png";
+        run2.src = "../images/run2.png";
+        run3.src = "../images/run3.png";
+
+        let bgX1 = 0;
+        let bgX2 = 800;
+
+        let runX = 100;
+        let runY = 350;
+
+        let ctx;
+        let counter = 0;
+
+        window.onload = function(){
+            let canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            let body = document.body;
+            body.onkeydown = moveCat;
+            window.setInterval(drawScreen, 50);
+        }
+        function drawScreen(){
+            bgX1 -=5;
+            bgX2 -=5;
+            if(bgX1 <= -800){
+                bgX1 = 800;
+                bgX2 = 0;
+            }
+            if(bgX2 <= -800){
+                bgX2 = 800;
+                bgX1 = 0;
+            }
+            counter++;
+            ctx.drawImage(bg1, bgX1, 0, 800, 600);
+            ctx.drawImage(bg2, bgX2, 0, 800, 600);
+            
+            if(counter % 3 == 0){
+                ctx.drawImage(run1, runX, runY, 100, 100);
+            }else if(counter % 3 == 1){
+                ctx.drawImage(run2, runX, runY, 100, 100);
+            }else{
+                ctx.drawImage(run3, runX, runY, 100, 100);
+            }
+        }
+        function moveCat(e){
+            if(e.keyCode == 38){
+                runY -= 5;
+            }else if(e.keyCode == 37){
+                runX -= 5;
+            }else if(e.keyCode == 39){
+                runX += 5;
+            }else if(e.keyCode == 40){
+                runY += 5;
+            }else if(e.keyCode == 32){
+                runY -= 50;
+            }
+        }
+
+
+
+    </script>
+    <style>
+         #myCanvas { background: #aaaaaa; }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800px" height="600px"></canvas>
+</body>
+</html>

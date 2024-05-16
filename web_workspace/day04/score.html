@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            text-align: center;
+        }
+        #result{
+            width: 250px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function testresult(){
+            if(num1.value >= 90){
+                result.value = "합격";
+            }else {
+                result.value = "불합격";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <h1>성적 입력</h1>
+            <input type="text" name="" value="" id="num1">
+            <input type="button" value="확인" onclick="testresult();">
+        </div>
+        <div>
+            <p>결과</p>
+            <input id="result" type="text" name="" value="" id="result">
+        </div>
+    </div>
+</body>
+</html>

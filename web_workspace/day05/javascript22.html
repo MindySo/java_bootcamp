@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 300px;
+        }
+    </style>
+     <script>
+        // 위에서부터 읽기 때문에 null 출력
+        // let poster = document.getElementById("poster");
+        // console.log(poster);
+    </script>
+</head>
+<body>
+    <img src="" alt="" id="poster">
+    <script>
+        // 여기서 뽑아야 뽑힌다
+        let poster = document.getElementById("poster");
+        console.log(poster);
+        let no = Math.ceil(Math.random()*9);
+        poster.src = "../images/" + no + ".jpg"
+
+        console.log("랜덤값 : " + (Math.floor(Math.random()*10)+1));
+    </script>
+</body>
+</html>

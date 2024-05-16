@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            margin: 15% auto;
+            text-align: center;
+        }
+        #inputdiv{
+            display: inline-block;
+            margin: 0 auto;
+            position: relative;
+            text-align: left;
+            margin: 10px 0;
+        }
+        #inputdiv>h5{
+            padding: 0px;
+            margin: 0px;
+            color: rgb(252, 161, 176);
+            font-weight: 600;
+        }
+        #result{
+            width: 226px;
+            height: 50px;
+            text-align: center;
+        }
+        input[type=text]{
+            border: 3px solid pink;
+            border-radius: 5px;
+            background: rgb(250, 206, 213);
+            color: white;
+            font-weight: 600;
+            height: 17px;
+        }
+        input[type=button]{
+            border: 3px solid pink;
+            border-radius: 5px;
+            background: rgb(250, 206, 213);
+            color: white;
+            font-weight: 600;
+            position: relative;
+            top: 1px;
+            height: 34px;
+        }
+        input:-internal-autofill-selected{
+            border: 3px solid pink;
+            border-radius: 5px;
+            background: rgb(250, 206, 213);
+            color: white;
+        }
+        input[type="text" i] {
+            padding-block: 5px;
+            padding-inline: 2px;
+        } 
+
+    </style>
+    <script>
+        // if문 사용
+        function beltresult(){
+            var n = year.value % 12
+            if(n == 4){
+                result.value = "쥐";
+            }else if(n == 5){
+                result.value = "소";
+            }else if(n == 6){
+                result.value = "호랑이";
+            }else if(n == 7){
+                result.value = "토끼";
+            }else if(n == 8){
+                result.value = "용";
+            }else if(n == 9){
+                result.value = "뱀";
+            }else if(n == 10){
+                result.value = "말";
+            }else if(n == 11){
+                result.value = "양";
+            }else if(n == 0){
+                result.value = "원숭이";
+            }else if(n == 1){
+                result.value = "닭";
+            }else if(n == 2){
+                result.value = "개";
+            }else{
+                result.value = "돼지";
+            }
+        }
+
+        //oj 사용
+        let oj = {
+            4 : '쥐', 5 : '소', 6 : '호랑이',
+            7 : '토끼', 8 : '용', 9 : '뱀',
+            10 : '말', 11 : '양', 1 : '원숭이',
+            2 : '닭', 3 : '개', 0 : '돼지'
+        }
+        function yearChk() {
+            let year = parseInt(document.getElementById('year').value);
+            yearDiv = year % 12;
+
+            let result = document.getElementById('result');
+            result.value = year + "년은 " + oj[yearDiv] + "띠 입니다.";
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="inputdiv">
+            <h5>태어난 년도</h5>
+            <input type="text" name="" value="" id="year">
+            <input type="button" value="확인" onclick="yearChk();">
+        </div>
+        <div>
+            <input id="result" type="text" name="" value="" id="result">
+        </div>
+    </div>
+</body>
+</html>

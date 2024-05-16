@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 문자열 객체
+        // string str = new String("ABCDEFG")
+
+        let str = "ABCDEFGH";
+        console.log(str);
+
+        // 2번부터 3글자
+        console.log(str.substring(1, 4));
+
+        // 특정 문자의 위치
+        // indexOf('A')
+        console.log(str.indexOf('A'));
+
+        // 중첩 가능
+        let email = "dagda@hanafos.com";
+
+        // id만 추출
+        console.log(email.substring(0, email.indexOf('@')));
+
+        console.log("=======================================");
+        let friendList = "aaa, bbb, ccc, ddd, eee, fff";
+        // spring("기호")를 통해서 문자열을 잘라 배열 형태로 리턴
+
+        let fList = friendList.split(',');
+        //배열에서 요소를 한개씩 꺼내서 출력
+        
+        for( i = 0 ; i < fList.length ; i++) {
+            console.log(fList[i]);
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

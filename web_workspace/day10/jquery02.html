@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){ 
+            $("#div2").css("background", "blue").css("width", "150px").css("height", "150px");
+            
+            $("#container").css({
+                "background": "pink",
+                "width": "300px", 
+                "height": "300px"});
+            console.log($("#container").css("width"));
+
+            $("#div3").css({
+                "background": "red",
+                "width": "150px", 
+                "height": "150px"})
+                .html("<h3>높이값 : " + $("#div3").css("width") + "</h3>")
+            })
+
+        
+    </script>
+</head>
+<body>
+    <div id="div2"></div>
+    <div id="container"></div>
+    <div id="div3"></div>
+</body>
+</html>

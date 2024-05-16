@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+         $(function(){
+            $("input[value='숨어']").on("click", function(){
+               $("img").hide(2000, function(){
+                alert("숨었따!");
+               });
+            });
+            $("input[value='나와']").on("click", function(){
+               $("img").show(2000);
+            });
+         })
+    </script>
+</head>
+<body>
+    <input type="button" value="숨어">
+    <input type="button" value="나와">
+    <br>
+    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzA1MDZfMTg0/MDAxNjgzMzY5NjMyMTg4.8qJ3n5tO6eJDlyI4udecAAU1FitgXlxljMaOW8KdUaIg.coiJeY8kdirK8Rzf9DBxJUvNn02VA78iHl5DuSjLR5Ug.PNG.withwithpet/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2023-05-06_%EC%98%A4%ED%9B%84_7.22.34.png?type=w800" width="300px" alt="">
+</body>
+</html>

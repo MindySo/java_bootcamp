@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            margin: 0 auto;
+            border: 1px solid black;
+            width: 300px;
+            height: 320px;
+            padding-top: 20px;
+        }
+        table, tr, td {
+            border-collapse: collapse;
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+        }
+        tr{
+            height: 45px;
+        }
+        td{
+            width: 70px;
+        }
+        #inputline{
+            height: 80px;
+        }
+        input[type=button]{
+            width: 50px;
+            height: 30px;
+        }
+        input[type=text]{
+            width: 250px;
+            height: 40px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        let expression  = "";
+        let temp = "";
+        function input(i){
+            temp = temp + i;
+            ioline.value = ioline.value + i;
+        }
+        function oper(i){
+            expression = expression + temp + i;
+            temp = "";
+            ioline.value = "";
+        }
+        function result(){
+            expression = expression + temp;
+            ioline.value = eval(expression);
+            temp = "";
+            expression = eval(expression);
+        }
+        function tempclear(){
+            temp = "";
+            ioline.value = "";
+        }
+        function allClear(){
+            temp = "";
+            expression = "";
+            ioline.value = "";
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <table>
+            <tr>
+                <td id = inputline colspan="4"><input type="text" name="" id="ioline"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="input(7)"></td>
+                <td><input type="button" value="8" onclick="input(8)"></td>
+                <td><input type="button" value="9" onclick="input(9)"></td>
+                <td><input type="button" value="+" onclick="oper('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="input(4)"></td>
+                <td><input type="button" value="5" onclick="input(5)"></td>
+                <td><input type="button" value="6" onclick="input(6)"></td>
+                <td><input type="button" value="-" onclick="oper('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="input(1)"></td>
+                <td><input type="button" value="2" onclick="input(2)"></td>
+                <td><input type="button" value="3" onclick="input(3)"></td>
+                <td><input type="button" value="*" onclick="oper('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" onclick="input(0)"></td>
+                <td><input type="button" value="00" onclick="input('00')"></td>
+                <td><input type="button" value="." onclick="input('.')"></td>
+                <td><input type="button" value="/" onclick="oper('/')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="C" onclick="tempclear()"></td>
+                <td><input type="button" value="AC" onclick="allClear()"></td>
+                <td><input type="button" value="=" onclick="result()"></td>
+                <td><input type="button" value="^" onclick="oper('**')"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/.metadata/
+web_workspace2/.metadata/
+web_workspace2/Servers/
+
+#등록 제외할 폴더
+mylib/
+tomcat10/
+
+#등록 제외할 파일
+demobld.sql

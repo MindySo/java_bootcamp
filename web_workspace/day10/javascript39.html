@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function prt(){
+           
+            // var로 선언한 변수는 선언부가 scope 상단으로 끌어올려지는 호이스팅 현상이 발생한다.
+            
+            console.log(name);
+            var name = "루피";
+            
+            //------------------------ 위 처럼 실행하면 아래와 동일한 결과 발생
+            var name;
+            console.log(name);
+            name = "루피";
+        }
+        prt();  // undefined
+
+        function prt2(){
+            console.log(name2);
+            let name2 = "뽀로로";
+        }
+        prt2(); // let은 오류 발생
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function printWhere(){
+            console.log("selected!");
+            console.log(document.frm.where);
+            console.log(document.frm.where.selectedIndex);
+            let sel = document.frm.where.selectedIndex;
+            // if(sel == 1){
+            //     location.href = "http://www.burgerking.co.kr"
+            // }else if(sel == 2){
+            //     location.href = "https://www.mcdonalds.co.kr/"
+            // }else if(sel == 3){
+            //     location.href = "https://www.subway.co.kr/"
+            // }else if(sel == 4){
+            //     location.href = "https://momstouch.co.kr/"
+            // }
+
+            let refs = new Array(5);
+            refs[0] = "#";
+            refs[1] = "http://www.burgerking.co.kr";
+            refs[2] = "https://www.mcdonalds.co.kr/";
+            refs[3] = "https://www.subway.co.kr/";
+            refs[4] = "https://momstouch.co.kr/";
+
+            location.href = refs[sel]
+        }
+    </script>
+</head>
+<body>
+    <h1>당신이 좋아하는 패스트 푸드점은?</h1>
+
+    <form action="" name="frm">
+        <select name="where" id="sel" onchange="printWhere();">
+            <option value="">-----------------</option>
+            <option value="버거킹">버거킹</option>
+            <option value="맥도날드">맥도날드</option>
+            <option value="서브웨이">서브웨이</option>
+            <option value="맘스터치">맘스터치</option>
+        </select>
+    </form>
+</body>
+</html>

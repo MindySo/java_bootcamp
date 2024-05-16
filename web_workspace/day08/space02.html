@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvas{background: #aaaaaa;}
+    </style>
+    <script>
+        let ctx;
+
+        let bgImg = new Image();
+        bgImg.src = "../images/space.jpg"
+        
+        let bgImg2 = new Image();
+        bgImg2.src = "../images/space.jpg"
+        
+        let ship1 = new Image();
+        ship1.src = "../images/gunship4.png"
+        
+        let ship2 = new Image();
+        ship2.src = "../images/gunship5.png"
+        
+        let ship3 = new Image();
+        ship3.src = "../images/gunship6.png"
+        
+        let ship4 = new Image();
+        ship4.src = "../images/gunship7.png"
+        
+        let enemyShip1_1 = new Image();
+        enemyShip1_1.src = "../images/gunship0.png"
+        
+        let enemyShip1_2 = new Image();
+        enemyShip1_2.src = "../images/gunship1.png"
+        
+        let enemyShip1_3 = new Image();
+        enemyShip1_3.src = "../images/gunship2.png"
+        
+        let enemyShip1_4 = new Image();
+        enemyShip1_4.src = "../images/gunship3.png"
+        
+        let enemyShip2_1 = new Image();
+        enemyShip2_1.src = "../images/gunship11.png"
+        
+        let enemyShip2_2 = new Image();
+        enemyShip2_2.src = "../images/gunship12.png"
+        
+        let enemyShip2_3 = new Image();
+        enemyShip2_3.src = "../images/gunship13.png"
+        
+        let enemyShip2_4 = new Image();
+        enemyShip2_4.src = "../images/gunship14.png"
+        
+        let enemyShip3_1 = new Image();
+        enemyShip3_1.src = "../images/gunship21.png"
+        
+        let enemyShip3_2 = new Image();
+        enemyShip3_2.src = "../images/gunship22.png"
+        
+        let enemyShip3_3 = new Image();
+        enemyShip3_3.src = "../images/gunship23.png"
+        
+        let enemyShip3_4 = new Image();
+        enemyShip3_4.src = "../images/gunship24.png"
+
+        bgY1 = 0;
+        bgY2 = -800;
+
+
+
+        let counter = 0;
+        
+        // 윈도창이 로딩되면 익명함수를 실행
+        window.onload = function(){
+            let canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            window.setInterval(drawScreen, 100);
+        }
+        
+        function drawScreen(){
+            ctx.drawImage(bgImg, 0, bgY1, 600, 800);
+            ctx.drawImage(bgImg2, 0, bgY2, 600, 800);
+            bgY1 += 5;
+            bgY2 += 5;
+            if(bgY1 >= 800){
+                bgY1 = -800;
+                bgY2 = 0;
+            }
+            if(bgY2 >= 800){
+                bgY2 = -800;
+                bgY1 = 0
+            }
+
+            counter++;
+            if(counter % 4 == 1){
+                ctx.drawImage(ship1, 250, 600, 60, 60);
+                ctx.drawImage(enemyShip1_1, 130, 100, 60, 60);
+                ctx.drawImage(enemyShip2_1, 250, 100, 60, 60);
+                ctx.drawImage(enemyShip3_1, 370, 100, 60, 60);
+            }else if(counter % 4 == 2){
+                ctx.drawImage(ship2, 250, 600, 60, 60);
+                ctx.drawImage(enemyShip1_2, 130, 100, 60, 60);
+                ctx.drawImage(enemyShip2_2, 250, 100, 60, 60);
+                ctx.drawImage(enemyShip3_2, 370, 100, 60, 60);
+            }else if(counter % 4 == 3){
+                ctx.drawImage(ship3, 250, 600, 60, 60);
+                ctx.drawImage(enemyShip1_3, 130, 100, 60, 60);
+                ctx.drawImage(enemyShip2_3, 250, 100, 60, 60);
+                ctx.drawImage(enemyShip3_3, 370, 100, 60, 60);
+            }else{
+                ctx.drawImage(ship4, 250, 600, 60, 60);
+                ctx.drawImage(enemyShip1_4, 130, 100, 60, 60);
+                ctx.drawImage(enemyShip2_4, 250, 100, 60, 60);
+                ctx.drawImage(enemyShip3_4, 370, 100, 60, 60);
+            }
+            
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="800"></canvas>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            text-align: center;
+        }
+    </style>
+    <script>
+        function maxnum(){
+            if(num1.value > num2.value){
+                max.value = num1.value;
+            }else if(num1.value < num2.value){
+                max.value = num2.value;
+            }else{
+                document.write("두 값이 같습니다!");
+            }
+        }
+        
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <input type="text" name="" value="" id="num1">
+            <input type="button" value="VS" onclick="maxnum();">
+            <input type="text" name="" value="" id="num2">
+        </div>
+        <div>
+            <p>MAX</p>
+            <input type="text" name="" value="" id="max">
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.co.jhta.web">
+  	<select id="queryAllEmp" resultType="kr.co.jhta.web.vo.EmpVO">
+  	SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp
+  	</select>
+  	<select id="queryEmpOne" parameterType="int" resultType="kr.co.jhta.web.vo.EmpVO">
+  	SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp WHERE = #{empno}
+  	</select>
+  	<insert id="insertEmpOne" parameterType="kr.co.jhta.web.vo.EmpVO">
+  	INSERT INTO emp VALUES(EMP_EMPNO.nextval, #{ename}, #{job}, #{mgr}, 
+  	#{hiredate}, #{sal}, #{comm}, #{deptno}) 
+  	</insert>
+  	<update id="updateEmpOne" parameterType="kr.co.jhta.web.vo.EmpVO">
+  	UPDATE emp SET ename = #{ename}, job = #{job}, sal = #{sal}
+  	</update>
+  	<delete id="deleteEmpOne" parameterType="int">
+  	DELETE FROM emp WHERE empno = #{empno}	
+  	</delete>
+  </mapper>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let bg1 = new Image();
+        let bg2 = new Image();
+        let run1 = new Image();
+        let run2 = new Image();
+        let run3 = new Image();
+        let gold1 = new Image();
+        let gold2 = new Image();
+        let silver1 = new Image();
+        let silver2 = new Image();
+        bg1.src = "../images/bg1.jpg";
+        bg2.src = "../images/bg2.jpg";
+        run1.src = "../images/run1.png";
+        run2.src = "../images/run2.png";
+        run3.src = "../images/run3.png";
+        gold1.src = "../images/gold.png";
+        gold2.src = "../images/gold.png";
+        silver1.src = "../images/silver.png";
+        silver2.src = "../images/silver.png";
+        
+        let bgX1 = 0;
+        let bgX2 = 800;
+
+        let runX = 150;
+        let runY = 400;
+        
+        let gold1X = 900;
+        let gold2X = 900;
+        let gold1Y = Math.floor(Math.random() * 170+200)+30;
+        // let gold2Y = Math.ceil(Math.random() * 170)+200;
+        // let gold1Y = 380;
+        // let gold2Y = 380;
+
+        let silver1X = 1300;
+        let silver2X = 1300;
+        let silver1Y = Math.floor(Math.random() * 170+200)+30;
+        // let silver2Y = Math.ceil(Math.random() * 170)+200;
+        // let silver1Y = 380;
+        // let silver2Y = 380;
+
+        let ctx;
+        let counter = 0;
+        
+        let jumpOn = false;     //점프 시도
+        let jumping = false;    //점프 중
+
+        let score = 0;
+
+        let canvas;
+        
+        let gameOver = false;
+
+        function coinDis(runX, runY, coin1X, coin1Y){
+            return Math.sqrt((runX - coin1X) * (runX - coin1X) + (runY - coin1Y) * (runY - coin1Y));
+        }
+
+        window.onload = function(){
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            // canvas.onkeydown = moveCat;
+            canvas.onmousedown = jump;
+            window.setInterval(drawScreen, 30);
+        }
+        function jump(){
+            if(jumping == false){
+                jumpOn = true;
+                jumping = true;
+            }
+        }
+        function drawScreen(){
+            if(!gameOver){
+                score++;
+                bgX1 -=5;
+                bgX2 -=5;
+
+                gold1X -=10;
+                // gold2X -=5;
+                silver1X -=10;
+                // silver2X -=5;
+            }else{
+                runY += 30;
+                if(runY > 750){
+                    runY -= 30;
+                }
+            }
+            if(jumpOn == true){
+                runY -= 10;
+                if(runY <= 200){
+                    jumpOn = false;
+                }
+            }
+            if(jumpOn == false){
+                if(runY < 400){
+                    runY += 10;
+                }else{
+                    jumping = false;
+                }
+            }
+            if(bgX1 <= -800){
+                bgX1 = 800;
+                bgX2 = 0;
+            }
+            if(bgX2 <= -800){
+                bgX2 = 800;
+                bgX1 = 0;
+            }
+            if(gold1X <= -50){
+                gold1X = 800;
+                gold1Y = Math.ceil(Math.random() * 170+200);
+                // gold2X = 0;
+            }
+            // if(gold2X <= -800){
+            //     gold2X = 800;
+            //     gold1X = 0;
+            // }
+            if(silver1X <= -50){
+                silver1X = 800;
+                silver1Y = Math.ceil(Math.random() * 170+200);
+                // silver2X = 0;
+            }
+            // if(silver2X <= -800){
+            //     silver2X = 800;
+            //     silver1X = 0;
+            // }
+            if(coinDis(runX, runY, gold1X, gold1Y) < 40) {
+                gold1X = -100;
+                gold1Y = -100;
+                score += 500;
+            }
+            if(coinDis(runX, runY, silver1X, silver1Y) < 40) {
+                silver1X = -100;
+                silver1Y = -100;
+                score += 100;
+            }
+
+            counter++;
+            ctx.drawImage(bg1, bgX1, 0, 800, 600);
+            ctx.drawImage(bg2, bgX2, 0, 800, 600);
+            ctx.drawImage(gold1, gold1X, gold1Y-30, 60, 60);
+            // ctx.drawImage(gold2, gold2X, gold2Y, 60, 60);
+            ctx.drawImage(silver1, silver1X, silver1Y-30, 60, 60);
+            // ctx.drawImage(silver2, silver2X, gold2Y, 60, 60);
+            
+            if(!gameOver){
+                if(counter % 3 == 0){
+                    ctx.drawImage(run1, runX-50, runY-50, 100, 100);
+                }else if(counter % 3 == 1){
+                    ctx.drawImage(run2, runX-50, runY-50, 100, 100);
+                }else{
+                    ctx.drawImage(run3, runX-50, runY-50, 100, 100);
+                }
+            }else{
+                ctx.drawImage(run3, runX-50, runY-50, 100, 100);
+            }
+
+            if(bgX2 < -190 && bgX2 > -340 && runY >= 400) {
+                ctx.fillStyle = "red";
+                ctx.font = "80px 고딕";
+                ctx.fillText("GAME OVER", 210, 300);
+                canvas.onkeydown = '';
+                canvas.onmousedown = '';
+                gameOver = true;
+            }
+
+            ctx.fillStyle = "red";
+            ctx.font = "30px 고딕";
+            ctx.fillText("SCORE : " + score, 330, 50);
+
+        }
+ 
+
+        
+        // function collectCoin() {
+        //     if(coinDis(runX, runY, gold1X, gold1Y) < 30) {
+        //         gold1X = -100;
+        //         gold1Y = -100;
+        //     }
+        //     if(coinDis(runX, runY, silver1X, silver1Y) < 30) {
+        //         silver1X = -100;
+        //         silver1Y = -100;
+        //     }
+            
+        // }
+
+
+
+        // function moveCat(e){
+        //     if(e.keyCode == 38){
+        //         runY -= 5;
+        //     }else if(e.keyCode == 37){
+        //         runX -= 5;
+        //     }else if(e.keyCode == 39){
+        //         runX += 5;
+        //     }else if(e.keyCode == 40){
+        //         runY += 5;
+        //     }
+        // }
+
+
+
+    </script>
+    <style>
+         #myCanvas { background: #aaaaaa; }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800px" height="600px"></canvas>
+</body>
+</html>

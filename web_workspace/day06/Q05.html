@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function outmsg(menu) {
+            document.getElementById("msg").innerHTML = "<h3>선택하신 메뉴는 " + menu.value + "입니다.</h3>"
+        }
+    </script>
+    <style>
+        img {
+            width: 200px;
+            height: 150px;
+        }
+        .allbox {
+            display: flex;
+            justify-content: center;
+        }
+        .box {
+            margin: 10px;
+            text-align: center;
+        }
+        .click {
+            display: inline;
+        }
+        #header{
+            text-align: center;
+        }
+        #msg{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainDiv">
+        <div id="header"><h1>오늘의 점심메뉴</h1></div>
+        <div class="allbox">
+            <div class="box">
+                <img src="https://i.namu.wiki/i/8s7OaNPsZ8KC1e8RQ6QZEwgfFUoIVVOIm0jA72-UO6Imw0OgI1aEK_DulMeXWbg4tstts3IQFMJS0jmYKD9rzQ.webp" alt="">
+                <div class="click"><br><input id="menu1" type="radio" name="option" value="라면" onclick="outmsg(this)"></div>
+                <label for="menu1">라면</label>
+            </div>
+            <div class="box">
+                <img src="https://recipe1.ezmember.co.kr/cache/recipe/2023/01/06/64d13f5dc569c88601b53868feee474c1.jpg" alt="">
+                <div class="click"><br><input id="menu2" type="radio" name="option" value="도시락" onclick="outmsg(this)"></div>
+                <label for="menu2">도시락</label>
+            </div>
+            <div class="box">
+                <img class="menu" src="https://cdn.ulsanpress.net/news/photo/202205/397803_179376_5737.jpg" alt="">
+                <div class="click"><br><input id="menu3" type="radio" name="option" value="짜장면" onclick="outmsg(this)"></div>
+                <label for="menu3">짜장면</label>
+            </div>
+            <div class="box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVZFUla_2eZCUEW-9C0rqfEP8vDrv_NVoa_w&s" alt="">
+                <div class="click"><br><input id="menu4" type="radio" name="option" value="짬뽕" onclick="outmsg(this)"></div>
+                <label for="menu4">짬뽕</label>
+            </div>
+        </div>
+        <div id="msg"></div>
+    </div>
+</body>
+</html>

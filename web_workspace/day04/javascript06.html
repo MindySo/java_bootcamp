@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log("test1");
+        var cnt = 0;                        //함수 밖 : 전역변수
+        function run(){
+            // console.log("test2");        
+            // var cnt = 0;                 //함수 안 : 지역변수
+            cnt++;
+            console.log("cnt : " + cnt);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="클릭" onclick="run();">
+</body>
+</html>

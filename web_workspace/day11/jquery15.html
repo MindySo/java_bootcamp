@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+           $("#btn1").on("click", ()=>{
+                $("input:not(:checked) +span").css({
+                    "background": "red"
+                })
+            })  
+        })
+       
+    </script>
+    <style>
+        /* body > div:nth-child(1)>span{
+            background: green;
+        } */
+        /* input+span{
+            color: red;
+        } */
+        /* input:checked +span {
+            color: blue;
+        }
+        input:not(:checked) +span {
+            color: yellowgreen;
+        } */
+
+        /* #shortcutArea > ul > li:nth-child(5) > a > span.service_name */
+    </style>
+</head>
+<body>
+    <div>
+        <input type="checkbox" name="fruit" id="">
+        <span>오렌지</span>
+    </div>
+    <div>
+        <input type="checkbox" name="fruit" id="test">
+        <span>바나나</span>
+    </div>
+    <div>
+        <input type="checkbox" name="fruit" id="">
+        <span>사과</span>
+    </div>
+    <br>
+    <input type="button" value="검사" id="btn1">
+</body>
+</html>

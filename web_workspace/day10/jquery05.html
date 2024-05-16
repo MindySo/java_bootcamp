@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // function prt(){
+        //     // let txt = $("txt");
+        //     // txt.value = "간단한 메시지";
+        //     console.log("간단한 메시지");
+        // }
+        $(function(){
+            $("#btn").on("click", function(){
+                console.log("메시지 출력");
+                console.log($("#txt").val());
+                $("#txt").val("점심시간");
+
+                $("#div1").html("<h2>" + $("#txt").val() + "</h2>");
+            })
+        })
+    </script>
+
+</head>
+<body>
+    <!-- 버튼을 누르면 간단한 메시지르 출력하게 하기 -->
+    <input type="text" name="" id="txt">
+    <input type="button" value="출력" id="btn">
+    <div id="div1"></div>
+</body>
+</html>

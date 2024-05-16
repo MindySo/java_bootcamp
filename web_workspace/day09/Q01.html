@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvas{background: #aaaaaa;}
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script>
+        let bgImg = new Image();
+        bgImg.src = "../images/p_bg.jpg"
+
+        let clouds1 = new Image();
+        clouds1.src = "../images/clouds.jpg"
+
+        let clouds2 = new Image();
+        clouds2.src = "../images/clouds.jpg"
+        
+        let ball1 = new Image();
+        ball1.src = "../images/ball1.png"
+
+        let ball2 = new Image();
+        ball2.src = "../images/ball2.png"
+
+        let ball3 = new Image();
+        ball3.src = "../images/ball3.png"
+
+        let ball4 = new Image();
+        ball4.src = "../images/ball4.png"
+
+        let ball5 = new Image();
+        ball5.src = "../images/ball5.png"
+
+        let p1 = new Image();
+        p1.src = "../images/p1.png"
+
+        let p2 = new Image();
+        p2.src = "../images/p2.png"
+
+        let p3 = new Image();
+        p3.src = "../images/p3.png"
+
+        let p4 = new Image();
+        p4.src = "../images/p4.png"
+
+        let p5 = new Image();
+        p5.src = "../images/p5.png"
+        
+        let p11 = new Image();
+        p11.src = "../images/p11.png"
+
+        let p22 = new Image();
+        p22.src = "../images/p22.png"
+
+        let p33 = new Image();
+        p33.src = "../images/p33.png"
+
+        let p44 = new Image();
+        p44.src = "../images/p44.png"
+
+        let p55 = new Image();
+        p55.src = "../images/p55.png"
+
+        let clouds1X = 0;
+        let clouds2X = -800;
+
+        let p1X = 100;
+        let p1Y = 300;
+        let p2X = 650;
+        let p2Y = 300;
+        let enemyUp = false;
+
+        let ballX = 0;
+        let ballY = 0;
+        let ballArr = [];
+        let ballCnt = 0;
+        let isCoolOn = false;
+
+        let bigBallX = 0;
+        let bigBallY = 0;
+        let bBArr = [];
+        let bBCnt = 0;
+        let isBBLeft = true;
+
+        let drawScreenCnt = 40;
+        let counter = 0;
+        let score = 0;
+        let coolTimeCnt = 2500;
+        let coolTimeCnt2 = 0;
+
+        let canvas;
+        let ctx;
+
+        window.onload = function(){
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            canvas.onmousemove = movePica;
+            canvas.onmousedown = shootBall;
+            let body = document.body;
+            body.onkeydown = shootBigBall;
+            
+            window.setInterval(drawScreen, drawScreenCnt);
+        }
+        
+        function drawScreen(){
+            counter++;
+            ctx.drawImage(bgImg, 0, 0, 800, 600);
+            ctx.drawImage(clouds1, clouds1X, 0, 1300, 170);
+            ctx.drawImage(clouds2, clouds2X, 0, 1300, 170);
+            clouds1X += 1;
+            clouds2X += 1;
+
+            if(clouds1X > 800){
+                clouds1X = -800
+                clouds2X = 0
+            }
+            if(clouds2X > 800){
+                clouds2X = -800
+                clouds1X = 0
+            }
+            
+            if(counter%5 == 0){
+                ctx.drawImage(p1, p1X, p1Y, 100, 100);
+                ctx.drawImage(p11, p2X, p2Y, 100, 100);
+            }else if(counter%5 == 1){
+                ctx.drawImage(p2, p1X, p1Y, 100, 100);
+                ctx.drawImage(p22, p2X, p2Y, 100, 100);
+            }else if(counter%5 == 2){
+                ctx.drawImage(p3, p1X, p1Y, 100, 100);
+                ctx.drawImage(p33, p2X, p2Y, 100, 100);
+            }else if(counter%5 == 3){
+                ctx.drawImage(p4, p1X, p1Y, 100, 100);
+                ctx.drawImage(p44, p2X, p2Y, 100, 100);
+            }else{
+                ctx.drawImage(p5, p1X, p1Y, 100, 100);
+                ctx.drawImage(p55, p2X, p2Y, 100, 100);
+            }
+            if(!enemyUp){
+                p2Y += 20;
+            }else{
+                p2Y -= 20;
+            }
+            if(p2Y <= 50){
+                enemyUp = false;
+            }else if(p2Y >= 500){
+                enemyUp = true;
+            }
+            for(let i = 0 ; i < ballArr.length ; i++){
+                let b = ballArr[i]
+                if(counter % 5 == 0){
+                ctx.drawImage(ball1, b.x, b.y, 30, 30);
+                }else if(counter % 5 == 1){
+                    ctx.drawImage(ball2, b.x, b.y, 30, 30);
+                }else if(counter % 5 == 2){
+                    ctx.drawImage(ball3, b.x, b.y, 30, 30);
+                }else if(counter % 5 == 3){
+                    ctx.drawImage(ball4, b.x, b.y, 30, 30);
+                }else{
+                    ctx.drawImage(ball5, b.x, b.y, 30, 30);
+                } 
+                b.x += 40;
+
+                if(b.x > 900){
+                    ballArr.shift();
+                }
+            }
+            for(let i = 0 ; i < bBArr.length ; i++){
+                let bb = bBArr[i]
+                if(counter % 5 == 0){
+                    ctx.drawImage(ball1, bb.x, bb.y, 100, 100);
+                }else if(counter % 5 == 1){
+                    ctx.drawImage(ball2, bb.x, bb.y, 100, 100);
+                }else if(counter % 5 == 2){
+                    ctx.drawImage(ball3, bb.x, bb.y, 100, 100);
+                }else if(counter % 5 == 3){
+                    ctx.drawImage(ball4, bb.x, bb.y, 100, 100);
+                }else{
+                    ctx.drawImage(ball5, bb.x, bb.y, 100, 100);
+                } 
+                bb.x += 40;
+
+                if(bb.x > 1100){
+                    bBArr.shift();
+                }
+            }
+            if(isCoolOn){
+                coolTimeCnt2++;
+                ctx.fillStyle = "blue";
+                ctx.font = "20px 고딕";
+                ctx.fillText("cooltime : " + (coolTimeCnt - coolTimeCnt2*drawScreenCnt)/1000 + "초", 100, 120);
+            }
+            checkCollision1();
+            checkCollision2();
+
+            ctx.fillStyle = "blue";
+            ctx.font = "30px 고딕";
+            ctx.fillText("SCORE     : " + score, 100, 50);
+            if (bBCnt >= 4){
+                ctx.fillText("남은 빅볼 : 0", 100, 90);
+            }else {
+                ctx.fillText("남은 빅볼 : " + (3-bBCnt), 100, 90);
+            }
+                
+
+        }
+        function movePica(e){
+            if(e.pageY > 50 && e.pageY < 550){
+                p1Y = e.pageY-50;
+            }
+        }
+        function shootBall(){
+            if(!isCoolOn){
+                ballX = p1X;
+                ballY = p1Y;
+                let b = {
+                    x : ballX,
+                    y : ballY
+                }
+                ballArr.push(b);
+                ballCnt++;
+                if (ballCnt >= 6){
+                    coolTime();
+                }
+            }
+        }
+        function coolTime(){
+            isCoolOn = true;
+            window.setTimeout(function(){
+                isCoolOn = false;
+                coolTimeCnt2 = 0;
+                ballCnt = 0;
+            }, coolTimeCnt);
+        }
+        function shootBigBall(e) {
+            if(e.keyCode == 32){
+                bigBallX = p1X;
+                bigBallY = p1Y;
+                let bb = {
+                    x : bigBallX,
+                    y : bigBallY
+                }
+                bBCnt++
+                if (bBCnt < 4){
+                    isBBLeft = false;
+                    bBArr.push(bb);
+                }
+            }
+        }
+        function pythagoras(x1, y1, x2, y2){
+            return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+        }
+        function checkCollision1(){
+            for(let i = 0 ; i < ballArr.length ; i++){
+                let b = ballArr[i];
+                if(pythagoras(b.x, b.y, p2X+50, p2Y+40) < 60){
+                    b.x = 900;
+                    score += 1;
+                }
+            }
+        }
+        function checkCollision2(){
+            for(let i = 0 ; i < bBArr.length ; i++){
+                let bb = bBArr[i];
+                if(pythagoras(bb.x, bb.y, p2X+50, p2Y+50) < 40){
+                    b.x = 900;
+                    score += 10;
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="600"></canvas><br>
+</body>
+</html>

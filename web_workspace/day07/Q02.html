@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let bg1 = new Image();
+        let bg2 = new Image();
+        let run1 = new Image();
+        let run2 = new Image();
+        let run3 = new Image();
+        let gold1 = new Image();
+        let gold2 = new Image();
+        let silver1 = new Image();
+        let silver2 = new Image();
+        bg1.src = "../images/bg1.jpg";
+        bg2.src = "../images/bg2.jpg";
+        run1.src = "../images/run1.png";
+        run2.src = "../images/run2.png";
+        run3.src = "../images/run3.png";
+        gold1.src = "../images/gold.png";
+        gold2.src = "../images/gold.png";
+        silver1.src = "../images/silver.png";
+        silver2.src = "../images/silver.png";
+        
+        let bgX1 = 0;
+        let bgX2 = 800;
+
+        let runX = 100;
+        let runY = 350;
+        
+        let gold1X = 900;
+        let gold2X = 900;
+        let silver1X = 1300;
+        let silver2X = 1300;
+
+        let ctx;
+        let counter = 0;
+        
+        let jumpOn = false;     //점프 시도
+        let jumping = false;    //점프 중
+
+        window.onload = function(){
+            let canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            let body = document.body;
+            body.onkeydown = moveCat;
+            body.onmousedown = jump;
+            window.setInterval(drawScreen, 30);
+        }
+        function jump(){
+            if(jumping == false){
+                jumpOn = true;
+                jumping = true;
+            }
+        }
+        function drawScreen(){
+            bgX1 -=5;
+            bgX2 -=5;
+
+            gold1X -=5;
+            gold2X -=5;
+            silver1X -=5;
+            silver2X -=5;
+
+            if(jumpOn == true){
+                runY -= 10;
+                if(runY <= 200){
+                    jumpOn = false;
+                }
+            }
+            if(jumpOn == false){
+                if(runY < 350){
+                    runY += 10;
+                }else{
+                    jumping = false;
+                }
+            }
+            if(bgX1 <= -800){
+                bgX1 = 800;
+                bgX2 = 0;
+            }
+            if(bgX2 <= -800){
+                bgX2 = 800;
+                bgX1 = 0;
+            }
+            if(gold1X <= -800){
+                gold1X = 800;
+                gold2X = 0;
+            }
+            if(gold2X <= -800){
+                gold2X = 800;
+                gold1X = 0;
+            }
+            if(silver1X <= -800){
+                silver1X = 800;
+                silver2X = 0;
+            }
+            if(silver2X <= -800){
+                silver2X = 800;
+                silver1X = 0;
+            }
+            counter++;
+            ctx.drawImage(bg1, bgX1, 0, 800, 600);
+            ctx.drawImage(bg2, bgX2, 0, 800, 600);
+            ctx.drawImage(gold1, gold1X, 380, 60, 60);
+            // ctx.drawImage(gold2, gold2X, 380, 60, 60);
+            ctx.drawImage(silver1, silver1X, 380, 60, 60);
+            // ctx.drawImage(silver2, silver2X, 380, 60, 60);
+            
+            if(counter % 3 == 0){
+                ctx.drawImage(run1, runX, runY, 100, 100);
+            }else if(counter % 3 == 1){
+                ctx.drawImage(run2, runX, runY, 100, 100);
+            }else{
+                ctx.drawImage(run3, runX, runY, 100, 100);
+            }
+
+            if(gold1X == runX && runY+30 == 380) {
+                gold1X == -100;
+                goldY == -100;
+            }
+        }
+        function moveCat(e){
+            if(e.keyCode == 38){
+                runY -= 5;
+            }else if(e.keyCode == 37){
+                runX -= 5;
+            }else if(e.keyCode == 39){
+                runX += 5;
+            }else if(e.keyCode == 40){
+                runY += 5;
+            }
+            // else if(e.keyCode == 32){
+            //     jump();
+            // }
+        }
+
+
+
+    </script>
+    <style>
+         #myCanvas { background: #aaaaaa; }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800px" height="600px"></canvas>
+</body>
+</html>

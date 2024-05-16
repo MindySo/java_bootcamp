@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#btn").on("click", function(){
+                let dan = $("#txt").val();
+                let output = ""
+                for(i=1 ; i<10 ; i++){
+                    output += dan + " x " + i + " = " + dan*i + "<br>"
+                }
+                $("#div1").html("<h2>" + output + "</h2>");
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="num">
+    <input type="button" value="단출력" id="btn">
+    <div id="div1"></div>
+</body>
+</html>

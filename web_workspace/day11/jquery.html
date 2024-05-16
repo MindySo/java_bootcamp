@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#btn1").on("click", function(){
+                $("img").hide();
+            })
+            $("#btn2").on("click", function(){
+                $("img").show();
+            })
+            $("#btn3").on("click", function(){
+                $("img").toggle();
+            })
+            $("#btn4").on("click", function(){
+                $("img").fadeIn({
+                    duration : 800,
+                    complete : function(){
+                        alert("뿅")
+                    }
+                });
+            })
+            $("#btn5").on("click", function(){
+                $("img").fadeOut({
+                    duration : 800,
+                    complete : function(){
+                        alert("슉")
+                    }
+            });
+            })
+            $("#btn6").on("click", function(){
+                $("#p1").text("Hello world")
+                        .css({"background": "pink", 
+                                "display": "inline"
+                        })
+                        .addClass("txt")
+                        .appendTo(".wrapper");
+            })
+            $("#btn7").on("click", () =>{
+                $("img").css("margin-left", "200px")
+                        .fadeOut(3000, function(){
+                            location.href="http://www.google.com";
+                        })
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="button" value="숨기기" id="btn1">
+    <input type="button" value="나타나기" id="btn2">
+    <input type="button" value="토글" id="btn3">
+    <input type="button" value="FadeIn" id="btn4">
+    <input type="button" value="FadeOut" id="btn5">
+    <input type="button" value="메시지출력" id="btn6">
+    
+    <input type="button" value="토끼 이동 후 사이트 전환" id="btn7">
+
+    <br>
+    <div class="wrapper">
+        <p>test</p>
+    </div>
+    <div>
+        <img src="../images/rabbit1.png" alt="">
+    </div>
+    <p id="p1"></p>
+</body>
+</html>

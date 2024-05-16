@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            // 첫번째 버튼을 누르면 1번째 행의 배경색으로 pink : eq
+            $("#btn1").on("click", function(){
+                console.log($("tr"));
+                $("tr:eq(0)").css("background", "pink");
+            })
+            // 두번째 버튼을 누르면 3번째 이하의 행의 배경색으로 red : lt(less than)
+            $("#btn2").on("click", function(){
+                console.log($("tr"));
+                $("tr:lt(3)").css("background", "red");     // 0, 1, 2번째가 바뀜
+            })
+            // 세번째 버튼을 누르면 4번째 이상의 행의 배경색으로 yellow : gt(greater than)
+            $("#btn3").on("click", function(){
+                console.log($("tr"));
+                $("tr:gt(2)").css("background", "yellow");  // 3. 4번째가 바뀜
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="button" value="버튼1" id="btn1">
+    <input type="button" value="버튼2" id="btn2">
+    <input type="button" value="버튼3" id="btn3">
+    <input type="button" value="버튼4" id="btn4">
+    <input type="button" value="버튼5" id="btn5">
+    <input type="button" value="버튼6" id="btn6">
+
+    <table>
+        <tr class="testClass">
+            <td>One</td>
+        </tr>
+        <tr class="testClass">
+            <td>Two</td>
+        </tr>
+        <tr class="testClass">
+            <td>Three</td>
+        </tr>
+        <tr class="testClass">
+            <td>Four</td>
+        </tr>
+        <tr class="testClass">
+            <td>Five</td>
+        </tr>
+    </table>
+</body>
+</html>

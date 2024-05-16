@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvas {background: #aaaaaa;}
+    </style>
+    <script>
+        //1. 현재창이 로딩이 되면 test2함수를 실행
+        window.onload = test2
+        //2. test2 함수에서는 myCanvas 객체 가져오기
+        function test2() {
+            let canvas = document.getElementById("myCanvas");
+            //2d 객체 ctx 가져오기
+            let ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(100, 100, 50, 50);
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(200, 100, 50, 50);
+            ctx.fillStyle = "blue";
+            ctx.fillRect(300, 100, 50, 50);
+
+            let name = "뽀로로";
+            ctx.font = "35px 고딕";
+            ctx.fillText("이름 : " + name, 100, 50);
+        }
+        
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas"  width="500px" height="500px"></canvas>
+</body>
+</html>

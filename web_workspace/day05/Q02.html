@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+      function lotto(){
+            let arr = [];
+
+            while (arr.length <= 5) {
+                let rnd = Math.floor(Math.random() * 45) + 1;
+
+                if (!arr.includes(rnd)) {
+                    arr.push(rnd)
+                } 
+            }
+            arr.sort((a, b) => a - b)
+            console.log(arr);
+
+            
+            for (let i = 0; i <= 5; i++) {
+                let path = "../images/ball/ball" + arr[i] + ".png"; 
+                let img1 = document.getElementById("b" + (i + 1));
+                img1.src = path;
+            }
+
+        }
+    </script>
+    <style>
+        .ballq{
+            display: inline;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball">
+        <img class="ballq" id="b1" src="../images/ball/q.jpg" alt="">
+        <img class="ballq" id="b2" src="../images/ball/q.jpg" alt="">
+        <img class="ballq" id="b3" src="../images/ball/q.jpg" alt="">
+        <img class="ballq" id="b4" src="../images/ball/q.jpg" alt="">
+        <img class="ballq" id="b5" src="../images/ball/q.jpg" alt="">
+        <img class="ballq" id="b6" src="../images/ball/q.jpg" alt="">
+    </div>
+    <div>
+        <input type="button" value="대박" onclick="lotto();">
+    </div>
+</body>
+</html>

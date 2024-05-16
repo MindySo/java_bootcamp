@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function operation(){
+            let t1 = document.getElementById("txt1").value;
+            let t2 = document.getElementById("txt2").value;
+            let oper = document.getElementById("oper").value;
+            let result = document.getElementById("result");
+            // t1 = parseInt(t1.value)
+            // t2 = parseInt(t2.value)
+            let r = 0;
+            let msg = t1+oper+t2;
+            console.log(msg);
+            r = eval(msg);
+            // if(oper.value == '+'){
+            //     r = t1 + t2;
+            // } else if(oper.value == '-'){
+            //     r = t1 - t2;
+            // } else if(oper.value == '*'){
+            //     r = t1 * t2;
+            // } else if(oper.value == '/'){
+            //     r = t1 / t2;
+            // }
+            result.value = r;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1">
+    <input type="text" name="" id="oper" size="3">
+    <input type="text" name="" id="txt2">
+    <input type="button" value="=" onclick="operation()">
+    <input type="text" name="" id="result">
+</body>
+</html>

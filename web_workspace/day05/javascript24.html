@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function viewResult(){
+            console.log("click!");
+            let m1 = document.getElementById("m1");
+            let m2 = document.getElementById("m2");
+            let m3 = document.getElementById("m3");
+            let m4 = document.getElementById("m4");
+            let m5 = document.getElementById("m5");
+
+            if(m1.checked){
+                console.log("유미의 세포들");
+            }else if(m2.checked){
+                console.log("파묘");
+            }else if(m3.checked){
+                console.log("쿵푸팬더4");
+            }else if(m4.checked){
+                console.log("비키퍼");
+            }else if(m5.checked){
+                console.log("댓글부대");
+            }
+            console.log("--------------------");
+            console.dir(document);
+            // console.log(document.frm.movie[0].checked);
+            if(document.frm.movie[0].checked){
+                console.log("유미의 세포들 선택됨");
+            }else if(document.frm.movie[1].checked){
+                console.log("파묘 선택됨");
+            }else if(document.frm.movie[2].checked){
+                console.log("쿵푸팬더4 선택됨");
+            }else if(document.frm.movie[3].checked){
+                console.log("비키퍼 선택됨");
+            }else if(document.frm.movie[4].checked){
+                console.log("댓글부대 선택됨");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>추천영화</h1>
+
+    <form action="" name="frm">
+        <input type="radio" name="movie" id="m1">유미의 세포들
+        <input type="radio" name="movie" id="m2">파묘
+        <input type="radio" name="movie" id="m3">쿵푸팬더4
+        <input type="radio" name="movie" id="m4">비키퍼
+        <input type="radio" name="movie" id="m5">댓글부대
+        <input type="button" value="추천" onclick="viewResult();">
+    </form>
+    
+    <img src="" alt="" id="movieImg">
+    <script>
+        
+        // poster.src = "../images/" + no + ".jpg"
+        let poster = document.getElementById("movieImg");
+        console.dir(document);
+        function viewResult(){
+            if(document.frm.movie[0].checked){
+                console.log("유미의 세포들 선택됨");
+                poster.src = "../images/1.jpg"
+            }else if(document.frm.movie[1].checked){
+                console.log("파묘 선택됨");
+                poster.src = "../images/2.jpg"
+            }else if(document.frm.movie[2].checked){
+                console.log("쿵푸팬더4 선택됨");
+                poster.src = "../images/3.jpg"
+            }else if(document.frm.movie[3].checked){
+                console.log("비키퍼 선택됨");
+                poster.src = "../images/4.jpg"
+            }else if(document.frm.movie[4].checked){
+                console.log("댓글부대 선택됨");
+                poster.src = "../images/5.jpg"
+            }
+        }
+        
+    </script>
+</body>
+</html>

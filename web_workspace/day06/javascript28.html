@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //버튼을 클릭하면 div 영역에 Hello 메세지 출력
+        function showDiv(){
+            console.log("출력 버튼 눌림");
+            let box1 = document.getElementById("box1");
+            box1.innerText = "<h2>일본에서는 위스키 구매</h2>";
+            box1.innerHTML = "<h2>일본에서는 위스키 구매</h2>";
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <div><input type="button" value="출력" onclick="showDiv();"></div>
+</body>
+</html>

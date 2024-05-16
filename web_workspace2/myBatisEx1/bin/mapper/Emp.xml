@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 사용할 sql문 -->
+   <mapper namespace= " ">
+	  <select id="getEmpData" resultType="vo.EmpVO" >
+		SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp
+	  </select>
+ </mapper>
+  

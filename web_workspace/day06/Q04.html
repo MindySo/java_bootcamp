@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function gugudan() {
+            let dan = document.getElementById("txt").value;
+            let div1 = document.getElementById("div1");
+            let tableStr = "";
+            if(dan == ""){
+                tableStr += "<h5>숫자를 입력해주세요.</h5>"
+            }else{
+               for(j = 1 ; j <=9 ; j++){
+                tableStr += "<h2>" + dan + "x" + j + "=" + dan*j + "</h2><h2>";
+            }
+            tableStr += "</h2>";
+        }
+        div1.innerHTML = tableStr; 
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt">
+    <input type="button" value="단출력" id="btn" onclick="gugudan()">
+    <div id="div1"></div>
+</body>
+</html>

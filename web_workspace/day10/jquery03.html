@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="../js/jquery-3.7.1.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function rnd(){
+            $("#box1").css({
+                "width" : Math.random()*500 + 50 + "px", 
+                "height" : Math.random()*500 + 50 + "px"
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="box1" style="background-color: red; width: 300px; height: 300px;"></div>
+    <input type="button" value="랜덤사이즈" onclick="rnd();">
+</body>
+</html>

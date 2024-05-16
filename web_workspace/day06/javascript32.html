@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let msg = new Array;
+        function saveData(){
+            let txt1 = document.getElementById("txt1");
+            msg.push(txt1.value);
+            console.log(msg);
+            txt1.value = '';
+            txt1.focus();
+        }
+        function printData(){
+            let txt2 = document.getElementById("txt2");
+            let data = "";
+            for(i = 0 ; i < msg.length ; i++){
+                data += "<h2>" + msg[i]+ "</h2>";
+            }
+            txt2.innerHTML = data;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1">
+    <input type="button" value="저장" onclick="saveData();">
+    <input type="button" value="출력" onclick="printData();">
+
+    <div id="txt2">
+        <h1>Test</h1>
+    </div>
+</body>
+</html>

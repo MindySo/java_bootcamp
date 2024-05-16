@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script>
+        // 현재 페이지가 로딩된 후에 함수를 호출
+        window.onload = test;   // 사진 등 모두 로딩되고 나서야 호출
+        function test(){
+            let box1 = document.getElementById("box1");
+            console.log(box1);
+        }
+
+        $(document).ready(function(){   // 더 빠르고 성능이 좋다
+            console.log($("#box1"));    // JQuery 객체 리턴
+            let box1 = document.getElementById("box1")
+            box1.style.backgroundColor = 'green';
+
+            // $("css선택자")
+            // $("#box1")  // 해당 엘리먼트를 감싼 JQuery
+            // $("#box1").css("속성", "값")  // 해당 속성을 적용
+            $("#box2").css("background", "skyblue") ; // 해당 속성을 적용
+
+            // function chaining
+            // 항상 JQuery 객체를 리턴하므로 함수를 계속 이어서 쓸 수 있다.
+            console.log($("#box3").css("background", "yellow"));    // 항상 객체 자신 리턴
+            $("#box3").css("background", "yellow").css("color", "green");
+        })
+
+
+    </script>
+    <style>
+       /* #box1 {background-color: blue;} */
+    </style>
+</head>
+<body>
+    <p>Hello JQuery</p>
+
+    <!-- <div id="box1" style="background-color: red;">이부분은 id 가 box1입니다</div> -->
+    <div id="box1">이부분은 id 가 box1입니다</div>
+    <div id="box2">이부분은 id 가 box2입니다</div>
+    <div id="box3">이부분은 id 가 box3입니다</div>
+    <div id="box4" style="background-color: yellow;" style="color: green;">이부분은 id 가 box4입니다</div>
+</body>
+</html>
